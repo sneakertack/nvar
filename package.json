@@ -1,0 +1,20 @@
+{
+  "name": "nvar",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Melvin Tiong",
+  "license": "MIT",
+  "devDependencies": {
+    "nyc": "^11.0.3",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.7.0"
+  }
+}

@@ -25,6 +25,27 @@ test('Escaping with backslashes', function (t) {
   t.end();
 });
 
+// Canon: https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
+test('Basic Parameter expansion', function (t) {
+  // Define custom fixture-maker in this case, as parameter expansion relies on pre-existing variables.
+  function nv(source) {
+    const target = Object.create(null);
+    target.style = 'retro'; // Simulates a pre-existing variable.
+    return nvar({source, target});
+  }
+  t.equal(nv('genre=$style').genre, 'retro', 'Handles basic parameter expansion (unbraced).');
+  t.equal(nv('genre=${style}').genre, 'retro', 'Handles basic parameter expansion (braced).');
+  t.equal(nv('superstyle=super$style').superstyle, 'superretro', 'Handles unbraced parameter expansion with literal prefix.');
+  t.equal(nv('direction=${style}grade').direction, 'retrograde', 'Handles braced parameter expansion with literal suffix.');
+  t.equal(nv('direction=$style\\grade').direction, 'retrograde', 'Handles demarcating the end of a variable name with a backslash in an unbraced expansion.');
+  t.equal(nv('dollarstyle=\\$style').dollarstyle, '$style', 'Does not expand if $-char is escaped.');
+  t.equal(nv('dollarbracestyle=$\\{style').dollarbracestyle, '$style', 'Does not expand if opening brace is escaped.');
+
+  t.end();
+});
+
+// MAYBE-TODO: Advanced Parameter expansion, e.g. all the forms listed in https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
+
 // Canon: https://www.gnu.org/software/bash/manual/html_node/Single-Quotes.html
 test('Escaping with single-quotes', function (t) {
   t.deepEqual(nv("toast='kaya'"), {toast: 'kaya'}, 'Does not include surrounding quotes in final value.');

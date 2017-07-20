@@ -62,3 +62,13 @@ test('Escaping with single-quotes', function (t) {
 
   t.end();
 });
+
+// Canon: https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html
+test('Escaping with double-quotes', function (t) {
+  t.deepEqual(nv('toast="kaya"'), {toast: 'kaya'}, 'Does not include surrounding quotes in final value.');
+  t.deepEqual(nv('toast="  kaya toast\t"'), {toast: '  kaya toast\t'}, 'Treats spaces and tabs literally.');
+  t.deepEqual(nv('toast="kaya\ntoast"'), {toast: 'kaya\ntoast'}, 'Treats newlines literally.');
+
+  t.end();
+});
+

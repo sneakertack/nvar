@@ -1,8 +1,16 @@
 const test = require('tape');
 const nvar = require('../lib');
 
-// Helper to initialise new instances for each test.
-function nv(source) {return nvar({source, target: Object.create(null)});}
+// Test rig for parsing - Takes in assignment syntax as input, returns an object (to simulate an environment) with assignments made.
+function nv(source, target = Object.create(null)) {return nvar({source, target});}
+test('Test rig', function (t) { // Make sure the rig isn't entirely broken.
+  const rigOk = nv('toast=kaya').toast === 'kaya';
+  t.ok(rigOk, 'Test rig for parsing is correctly wired to the module\'s API.');
+  if (!rigOk) {
+    throw new Error('nv() test rig in '+__filename+' fails basic operation. Did the module API change? Rewire the test rig accordingly.');
+  }
+  t.end();
+});
 
 // Note: tests are less unit and more accumulative - successive sections may build upon functionality established in the preceding sections.
 // E.g. after backslash-escaping has been introduced and tested, the subsequent single-quotes section may then test for the case of backslashes appearing within quotes.
@@ -27,19 +35,17 @@ test('Escaping with backslashes', function (t) {
 
 // Canon: https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 test('Basic Parameter expansion', function (t) {
-  // Define custom fixture-maker in this case, as parameter expansion relies on pre-existing variables.
-  function nv(source) {
-    const target = Object.create(null);
-    target.style = 'retro'; // Simulates a pre-existing variable.
-    return nvar({source, target});
+  // Modify the rig to provide a pre-existing variable for this secton.
+  function nv2(source) {
+    return nv(source, {style: 'retro'}); // Simulates an env which has a pre-existing environment variable 'style'.
   }
-  t.equal(nv('genre=$style').genre, 'retro', 'Handles basic parameter expansion (unbraced).');
-  t.equal(nv('genre=${style}').genre, 'retro', 'Handles basic parameter expansion (braced).');
-  t.equal(nv('superstyle=super$style').superstyle, 'superretro', 'Handles unbraced parameter expansion with literal prefix.');
-  t.equal(nv('direction=${style}grade').direction, 'retrograde', 'Handles braced parameter expansion with literal suffix.');
-  t.equal(nv('direction=$style\\grade').direction, 'retrograde', 'Handles demarcating the end of a variable name with a backslash in an unbraced expansion.');
-  t.equal(nv('dollarstyle=\\$style').dollarstyle, '$style', 'Does not expand if $-char is escaped.');
-  t.equal(nv('dollarbracestyle=$\\{style').dollarbracestyle, '$style', 'Does not expand if opening brace is escaped.');
+  t.equal(nv2('genre=$style').genre, 'retro', 'Handles basic parameter expansion (unbraced).');
+  t.equal(nv2('genre=${style}').genre, 'retro', 'Handles basic parameter expansion (braced).');
+  t.equal(nv2('superstyle=super$style').superstyle, 'superretro', 'Handles unbraced parameter expansion with literal prefix.');
+  t.equal(nv2('direction=${style}grade').direction, 'retrograde', 'Handles braced parameter expansion with literal suffix.');
+  t.equal(nv2('direction=$style\\grade').direction, 'retrograde', 'Handles demarcating the end of a variable name with a backslash in an unbraced expansion.');
+  t.equal(nv2('dollarstyle=\\$style').dollarstyle, '$style', 'Does not expand if $-char is escaped.');
+  t.equal(nv2('dollarbracestyle=$\\{style').dollarbracestyle, '$style', 'Does not expand if opening brace is escaped.');
 
   t.end();
 });

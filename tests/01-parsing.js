@@ -79,3 +79,13 @@ test('Escaping with double-quotes', function (t) {
   t.end();
 });
 
+test('Comments', function (t) {
+  t.deepEqual(nv('# a comment\ntoast=kaya'), {toast: 'kaya'}, 'Ignores full-line comments (\'#\' at start of line).');
+  t.deepEqual(nv('toast=kaya # a comment\neggs=hardboiled'), {toast: 'kaya', eggs: 'hardboiled'}, 'Ignores same-line comments (upon seeing space-hash (i.e. \' #\') till end of line).');
+  t.deepEqual(nv('breakfast=toast\\ and\\ #-browns'), {breakfast: 'toast and #-browns'}, 'Doesnt\'t treat backslash-escaped space-hash as start of commentary.');
+  t.deepEqual(nv("breakfast='toast and #-browns'"), {breakfast: 'toast and #-browns'}, 'Doesnt\'t treat space-hash within single-quotes as start of commentary.');
+  t.deepEqual(nv('breakfast="toast and #-browns"'), {breakfast: 'toast and #-browns'}, 'Doesnt\'t treat space-hash within double-quotes as start of commentary.');
+
+  t.end();
+});
+

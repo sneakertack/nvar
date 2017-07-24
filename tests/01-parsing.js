@@ -24,6 +24,13 @@ test('Unquoted values', function (t) {
   t.end();
 });
 
+test("'export' Prefix", function (t) {
+  t.deepEqual(nv('export toast=kaya'), {toast: 'kaya'}, "Accepts optional 'export' prefix at the start of assignment.");
+  t.deepEqual(nv('export export toast=kaya'), {}, 'Only allows at most 1 optional prefix.');
+
+  t.end();
+});
+
 // Canon: https://www.gnu.org/software/bash/manual/html_node/Escape-Character.html
 test('Escaping with backslashes', function (t) {
   t.deepEqual(nv('toast=ka\\\nya'), {toast: 'kaya'}, 'Removes backslash-newline combination.');

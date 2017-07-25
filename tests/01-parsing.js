@@ -81,6 +81,14 @@ test('Escaping with double-quotes', function (t) {
   t.end();
 });
 
+test('Intense combinations of the above', function (t) {
+  t.deepEqual(nv(`mixedbag='foo'bar"baz"`), {mixedbag: 'foobarbaz'}, 'Combo (incl. quoted element concatenation).');
+  t.deepEqual(nv("SQ_style='it'\\''s okay'"), {SQ_style: "it's okay"}, 'Combo (incl. expected single-quoted usage and escaping).');
+  t.equal(nvar({source: 'report="He said, \\"${message}\\"."', target: {message: `I said, "Everything's fine!"`}}).report, `He said, "I said, "Everything's fine!"."`, 'Combo (incl. quote literals in expanded parameters).');
+
+  t.end();
+});
+
 test('Comments', function (t) {
   t.deepEqual(nv('# a comment\ntoast=kaya'), {toast: 'kaya'}, 'Ignores full-line comments (\'#\' at start of line).');
   t.deepEqual(nv('toast=kaya # a comment\neggs=hardboiled'), {toast: 'kaya', eggs: 'hardboiled'}, 'Ignores same-line comments (upon seeing space-hash (i.e. \' #\') till end of line).');
@@ -90,4 +98,3 @@ test('Comments', function (t) {
 
   t.end();
 });
-

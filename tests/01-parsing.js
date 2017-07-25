@@ -34,8 +34,10 @@ test("'export' Prefix", function (t) {
 // Canon: https://www.gnu.org/software/bash/manual/html_node/Escape-Character.html
 test('Escaping with backslashes', function (t) {
   t.deepEqual(nv('toast=ka\\\nya'), {toast: 'kaya'}, 'Removes backslash-newline combination.');
-  t.deepEqual(nv('science=`\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\=\\_\\+\\[\\]\\\\\\{\\}\\|\\;\\:\\\'\\"\\,\\.\\/\\<\\>\\?\\a\\b\\c\\1\\2\\3'), {science: 'science=`~!@#$%^&*()-=_+[]\\{}|;:\'",./<>?abc123'}, 'Preserves literal value of character following a backslash.');
+  t.deepEqual(nv('science=`\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\=\\_\\+\\[\\]\\\\\\{\\}\\|\\;\\:\\\'\\"\\,\\.\\/\\<\\>\\?\\a\\b\\c\\1\\2\\3'), {science: '`~!@#$%^&*()-=_+[]\\{}|;:\'",./<>?abc123'}, 'Preserves literal value of character following a backslash.');
   t.deepEqual(nv('toast=ka\\ ya'), {toast: 'ka ya'}, 'Allows escaping of the space character in an unquoted value.');
+  t.deepEqual(nv('to\\\nast\\\n=\\\nkaya'), {toast: 'kaya'}, 'Removes backslash-newline combinations even in the left side of an assignment.');
+  t.deepEqual(nv('toa\\st=kaya'), {}, 'Does not otherwise work in the left side of an assignment.');
 
   t.end();
 });

@@ -77,6 +77,11 @@ test('Escaping with double-quotes', function (t) {
   t.deepEqual(nv('toast="kaya"'), {toast: 'kaya'}, 'Does not include surrounding quotes in final value.');
   t.deepEqual(nv('toast="  kaya toast\t"'), {toast: '  kaya toast\t'}, 'Treats spaces and tabs literally.');
   t.deepEqual(nv('toast="kaya\ntoast"'), {toast: 'kaya\ntoast'}, 'Treats newlines literally.');
+  t.deepEqual(nv('toast="kaya \\\ntoast"'), {toast: 'kaya toast'}, 'Removes backslash-newline combination.');
+  t.deepEqual(nv('toast="\\"kaya\\"-toast"'), {toast: '"kaya"-toast'}, 'Allows backslash-escaping of double-quotes.');
+  t.deepEqual(nv('toast="kaya toa\\$t"'), {toast: 'kaya toa$t'}, 'Allows backslash-escaping of $-signs.');
+  t.deepEqual(nv('toast="kaya\\\\toast"'), {toast: 'kaya\\toast'}, 'Allows backslash-escaping of backslashes.');
+  t.deepEqual(nv('science="\\a\\\'\\{\\1"'), {science: '\\a\\\'\\{\\1'}, 'Does not otherwise do backslash-escaping (i.e. preserves backslash literal).');
 
   t.end();
 });

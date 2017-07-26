@@ -89,7 +89,7 @@ test('Escaping with double-quotes', function (t) {
 test('Intense combinations of the above', function (t) {
   t.deepEqual(nv(`mixedbag='foo'bar"baz"`), {mixedbag: 'foobarbaz'}, 'Combo (incl. quoted element concatenation).');
   t.deepEqual(nv("SQ_style='it'\\''s okay'"), {SQ_style: "it's okay"}, 'Combo (incl. expected single-quoted usage and escaping).');
-  t.equal(nvar({source: 'report="He said, \\"${message}\\"."', target: {message: `I said, "Everything's fine!"`}}).report, `He said, "I said, "Everything's fine!"."`, 'Combo (incl. quote literals in expanded parameters).');
+  t.equal(nvar({source: 'report="He said, \\"${message}\\"."', target: {message: `I said, "Everything's fine!".`}}).report, `He said, "I said, "Everything's fine!".".`, 'Combo (incl. quote literals in expanded parameters).');
 
   t.end();
 });

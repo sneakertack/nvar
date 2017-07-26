@@ -54,7 +54,7 @@ test('Basic Parameter expansion', function (t) {
   t.equal(nv2('direction=${style}grade').direction, 'retrograde', 'Handles braced parameter expansion with literal suffix.');
   t.equal(nv2('direction=$style\\grade').direction, 'retrograde', 'Handles demarcating the end of a variable name with a backslash in an unbraced expansion.');
   t.equal(nv2('dollarstyle=\\$style').dollarstyle, '$style', 'Does not expand if $-char is escaped.');
-  t.equal(nv2('dollarbracestyle=$\\{style').dollarbracestyle, '$style', 'Does not expand if opening brace is escaped.');
+  t.equal(nv2('dollarbracestyle=$\\{style').dollarbracestyle, '${style', 'Does not expand if opening brace is escaped.');
 
   t.end();
 });

@@ -1,20 +1,27 @@
 {
   "name": "nvar",
-  "version": "0.1.2",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Adds environment variables declared in a `.env` file to your app's `process.env`. Useful during development.",
   "main": "lib/index.js",
-  "directories": {
-    "test": "tests"
-  },
+  "engines": {"node": ">=6.0"},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run -s test-tap | tap-spec",
+    "test-cov": "nyc -s npm run -s test-tap | tap-spec; nyc report",
+    "test-tap": "tape tests/**/*.js"
   },
-  "keywords": [],
+  "keywords": ["env", "environment", "variable", "dotenv", "envar", "config", "shell", "settings", "init", "development", "preload"],
+  "bugs": "https://github.com/sneakertack/nvar/issues",
+  "repository": "sneakertack/nvar",
   "author": "Melvin Tiong",
   "license": "MIT",
   "devDependencies": {
     "nyc": "^11.0.3",
     "tap-spec": "^4.1.1",
     "tape": "^4.7.0"
+  },
+  "nyc": {
+    "exclude": [
+      "tests"
+    ]
   }
 }

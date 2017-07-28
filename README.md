@@ -1,4 +1,4 @@
-Adds environment variables declared in a `.env` file to your app's `process.env`. Useful during development.
+![A static badge, dynamise one day](https://img.shields.io/badge/tests-40%2F40-brightgreen.svg)
 
 ## Intro
 
@@ -15,7 +15,7 @@ Install by running (currently only works on Node 6+):
 npm install --save nvar
 ```
 
-Make a `.env` file in your app's root folder, then require and call `nvar` at the top of your application code:
+Make a `.env` file in your app's root folder:
 
 ```sh
 # .env (usually gitignored)
@@ -23,6 +23,8 @@ DB_URL='postgresql://user:password@localhost:5432/mydb'
 GITHUB_API_TOKEN=6495e6cf5fb93d68 # quotes are usually optional.
 export LOGLEVEL=SEVERE # prepend with 'export' (not required for nvar, but typically found in Bash scripts).
 ```
+
+Then, require and call `nvar` at the top of your application code:
 
 ```js
 require('nvar')();

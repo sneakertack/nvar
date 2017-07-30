@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.3] - 2017-07-30
+### Fixed
+- Implement string argument shorthand that was advertised in readme but overlooked during development.
+
 ## [1.0.2] - 2017-07-30
 ### Added
 - This changelog, with descriptions starting from v1.0.0.

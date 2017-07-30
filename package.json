@@ -1,6 +1,6 @@
 {
   "name": "nvar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Adds environment variables declared in a `.env` file to your app's `process.env`. Useful during development.",
   "main": "lib/index.js",
   "engines": {"node": ">=6.0"},

@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.1.0] - 2017-08-01
 ### Added
 - Add `enoent` option, to specify whether to throw, warn, or do nothing if the envfile was not found. The default is to warn if no path was specified (defaulting to `.env`), and throw if a path was explicitly specified.
 - Add a basic Travis configuration.

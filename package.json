@@ -1,15 +1,29 @@
 {
   "name": "nvar",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Reads shell environment variables from a file and assigns them to `process.env` (or anywhere else).",
   "main": "lib/index.js",
-  "engines": {"node": ">=6.0"},
+  "engines": {
+    "node": ">=6.0"
+  },
   "scripts": {
     "test": "npm run -s test-tap | tap-spec",
     "test-cov": "nyc -s npm run -s test-tap | tap-spec; nyc report",
     "test-tap": "tape tests/**/*.js"
   },
-  "keywords": ["env", "environment", "variable", "dotenv", "envar", "config", "shell", "settings", "init", "development", "preload"],
+  "keywords": [
+    "env",
+    "environment",
+    "variable",
+    "dotenv",
+    "envar",
+    "config",
+    "shell",
+    "settings",
+    "init",
+    "development",
+    "preload"
+  ],
   "bugs": "https://github.com/sneakertack/nvar/issues",
   "repository": "sneakertack/nvar",
   "author": "Melvin Tiong",

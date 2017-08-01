@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add `enoent` option, to specify whether to throw, warn, or do nothing if the envfile was not found. The default is to warn if no path was specified (defaulting to `.env`), and throw if a path was explicitly specified.
 - Add a basic Travis configuration.
+- Add words to readme.
 
 ### Changed
 - nvar will only warn and no longer throw an error by default when called in its simplest form (i.e. `require('nvar')()` without any arguments) and a `.env` envfile was not found.

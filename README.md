@@ -27,12 +27,13 @@ export LOGLEVEL=SEVERE # prepend with 'export' (not required for nvar, but typic
 Then, require and call `nvar` at the top of your application code:
 
 ```js
+// Require and call (note the calling brackets at the end).
 require('nvar')();
-// Variables that were declared in .env in the application's root folder have now been added to process.env.
-// Note the calling brackets at the end.
 
-console.log(process.env.DB_URL);
-console.log(process.env.GITHUB_API_TOKEN);
+// Variables that were declared in .env in the application's root folder have now been added to process.env.
+console.log(process.env.DB_URL); // Prints 'postgresql://user:password@localhost:5432/mydb'.
+console.log(process.env.GITHUB_API_TOKEN); // Prints '6495e6cf5fb93d68'.
+console.log(process.env.LOGLEVEL); // Prints 'SEVERE'.
 ```
 
 Or, if your `.env` file is somewhere else, then do:
@@ -47,7 +48,8 @@ Or, if you need to change some other options from the defaults, then do:
 require('nvar')({
   path: '../somedir/set-env.sh', // filepath to envfile
   source: 'FOO=BAR', // alternatively, provide the envfile source directly.
-  target: module.exports // assign to something else besides process.env instead.
+  target: module.exports, // assign to something else besides process.env instead.
+  enoent: 'warn' // Do what when the envfile was not found? Set to null|'warn'|'error'.
 });
 ```
 
@@ -99,3 +101,6 @@ DB_NAME=fun
 DB_URL="${DB_USER}:${DB_PASS}@$DB_HOST:$DB_PORT/${DB_NAME}" # Curly braces are optional. Can be done within double quotes, or unquoted.
 ```
 
+<!--## Testing
+
+`nvar` was released a bit late to the Node environment management party, but makes up for it by being **thoroughly tested**. -->

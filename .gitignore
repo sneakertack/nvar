@@ -1,3 +1,6 @@
 node_modules/
 .nyc_output/
 coverage/
+
+# Compatibility version to be built.
+lib/nvar-es5.js

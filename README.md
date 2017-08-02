@@ -1,4 +1,4 @@
-![A static badge, dynamise one day](https://img.shields.io/badge/tests-40%2F40-brightgreen.svg)
+![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-48%2F48-brightgreen.svg)
 
 ## Intro
 

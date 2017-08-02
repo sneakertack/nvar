@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.0] - 2017-08-02
+### Added
+- Support Node.js runtimes down till v0.10.0 (via transpilation down to ES5 during install, runtimes >= v6 will still load the ES2015+ source directly).
+
+### Changed
+- Module no longer depends on `fs` until it needs to load a file.
+
 ## [1.1.0] - 2017-08-01
 ### Added
 - Add `enoent` option, to specify whether to throw, warn, or do nothing if the envfile was not found. The default is to warn if no path was specified (defaulting to `.env`), and throw if a path was explicitly specified.

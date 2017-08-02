@@ -1,15 +1,15 @@
-![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-48%2F48-brightgreen.svg)
+[![Build Status](https://travis-ci.org/sneakertack/nvar.svg?branch=master)](https://travis-ci.org/sneakertack/nvar) ![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-48%2F48-brightgreen.svg)
 
 ## Intro
 
-`nvar` is a Node module that lets you declare environment variables in an envfile (usually named `.env`) in your app's root folder. When your app starts, `nvar` supplements `process.env` with those variables, making it useful for setting your app configuration or storing API credentials during development.
+`nvar` is a Node module that lets you declare environment variables in an envfile (usually `.env` in your app's root folder). When your app starts, `nvar` loads those variables (into `process.env` by default), making it useful for editing your app configuration and API credentials during development.
 
-It works like (and is inspired by) [dotenv](https://github.com/bkeepers/dotenv) (Ruby), [dotenv](https://github.com/motdotla/dotenv) (Node), and [env2](https://github.com/dwyl/env2). It differs from the popular [dotenv](https://github.com/motdotla/dotenv) library for Node in that nvar's envfile syntax follows that of shell script (i.e. it is mostly interchangeable with Bash's `source`).
+It works like (and is inspired by) [dotenv](https://github.com/bkeepers/dotenv) (Ruby), [dotenv](https://github.com/motdotla/dotenv) (Node), and [env2](https://github.com/dwyl/env2). It differs from the popular [dotenv](https://github.com/motdotla/dotenv) library for Node in that nvar follows Shell syntax (so if you are already loading environment variables via `source`, you can expect this module to be a drop-in replacement).
 
 
 ## Usage
 
-Install by running (currently only works on Node 6+):
+Install by running:
 
 ```sh
 npm install --save nvar
@@ -18,7 +18,7 @@ npm install --save nvar
 Make a `.env` file in your app's root folder:
 
 ```sh
-# .env (usually gitignored)
+# .env (usually added to .gitignore)
 DB_URL='postgresql://user:password@localhost:5432/mydb'
 GITHUB_API_TOKEN=6495e6cf5fb93d68 # quotes are usually optional.
 export LOGLEVEL=SEVERE # prepend with 'export' (not required for nvar, but typically found in Bash scripts).
@@ -27,7 +27,7 @@ export LOGLEVEL=SEVERE # prepend with 'export' (not required for nvar, but typic
 Then, require and call `nvar` at the top of your application code:
 
 ```js
-// Require and call (note the calling brackets at the end).
+// Note the calling brackets at the end.
 require('nvar')();
 
 // Variables that were declared in .env in the application's root folder have now been added to process.env.
@@ -46,10 +46,11 @@ Or, if you need to change some other options from the defaults, then do:
 
 ```js
 require('nvar')({
-  path: '../somedir/set-env.sh', // filepath to envfile
-  source: 'FOO=BAR', // alternatively, provide the envfile source directly.
-  target: module.exports, // assign to something else besides process.env instead.
-  enoent: 'warn' // Do what when the envfile was not found? Set to null|'warn'|'error'.
+  // All options listed.
+  path: '../somedir/set-env.sh', // Filepath to envfile
+  source: 'FOO=BAR', // Alternatively, provide the envfile source directly.
+  target: module.exports, // Assign to something else besides process.env instead.
+  enoent: 'warn' // What should happen if the envfile was not found? Set to null|'warn'|'error'.
 });
 ```
 
@@ -64,7 +65,7 @@ API_TOKEN='12345abc'
 GREETING='What'\''s your name?'
 ```
 
-**The in-depth version:** The following shell-isms are supported. That means there's a very high chance that you can use `nvar` to read your existing Bash-`source`d envfile, and vice versa.
+**The in-depth version:** The following shell-isms are supported, so its very likely that you can use `nvar` to read your existing Bash-`source`d envfile, and vice versa.
 
 ```sh
 FOO=bar

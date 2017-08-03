@@ -10,8 +10,10 @@
     "prepare": "npm run transpile",
     "transpile": "babel lib/nvar.js -o lib/nvar-es5.js",
     "test": "npm run -s test-tap | tap-spec",
-    "test-cov": "nyc -s npm run -s test-tap | tap-spec; nyc report",
-    "test-tap": "tape tests"
+    "test-cov": "nyc -s npm run -s test-tap | tap-spec",
+    "test-cov-report": "nyc -s npm run -s test-tap | tap-spec; nyc report",
+    "test-tap": "tape tests",
+    "coveralls": "npm run -s test-cov && cat coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "keywords": [
     "env",
@@ -53,6 +55,7 @@
     ],
     "reporter": [
       "text",
+      "lcov",
       "html"
     ]
   }

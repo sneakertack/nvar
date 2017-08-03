@@ -50,6 +50,10 @@
   "nyc": {
     "exclude": [
       "tests"
+    ],
+    "reporter": [
+      "text",
+      "html"
     ]
   }
 }

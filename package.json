@@ -13,7 +13,7 @@
     "test-cov": "nyc -s npm run -s test-tap | tap-spec",
     "test-cov-report": "nyc -s npm run -s test-tap | tap-spec; nyc report",
     "test-tap": "tape tests",
-    "coveralls": "npm run -s test-cov && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "env",

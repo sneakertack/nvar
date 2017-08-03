@@ -13,7 +13,7 @@
     "test-cov": "nyc -s npm run -s test-tap | tap-spec",
     "test-cov-report": "nyc -s npm run -s test-tap | tap-spec; nyc report",
     "test-tap": "tape tests",
-    "coveralls": "npm run -s test-cov && cat coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coveralls": "npm run -s test-cov && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "keywords": [
     "env",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.6.0",
+    "coveralls": "^2.13.1",
     "nyc": "^11.0.3",
     "sinon": "^2.4.1",
     "tap-spec": "^4.1.1",
@@ -42,11 +43,14 @@
   },
   "babel": {
     "presets": [
-      ["env", {
-        "targets": {
-          "node": "0.10"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "0.10"
+          }
         }
-      }]
+      ]
     ]
   },
   "nyc": {

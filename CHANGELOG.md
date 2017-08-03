@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.1] - 2017-08-03
+### Added
+- API section in the readme, which details options and defaults.
+
+### Removed
+- Made package slightly leaner by removing tests and metafiles during install.
+
 ## [1.2.0] - 2017-08-02
 ### Added
 - Support Node.js runtimes down till v0.10.0 (via transpilation down to ES5 during install, runtimes >= v6 will still load the ES2015+ source directly).

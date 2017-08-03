@@ -69,7 +69,7 @@ GREETING='What'\''s your name?'
 
 ```sh
 FOO=bar
-EGGS=scrambled TOAST=kaya # Multiple assignments on the same line work.
+EGGS=halfboiled TOAST=kaya # Multiple assignments on the same line work.
 LUNCH=noodle echo ignored # Disregards shell commands.
 
 # Backslash followed by newline breaks the value across multiple lines.
@@ -101,6 +101,21 @@ DB_PORT=5432
 DB_NAME=fun
 DB_URL="${DB_USER}:${DB_PASS}@$DB_HOST:$DB_PORT/${DB_NAME}" # Curly braces are optional. Can be done within double quotes, or unquoted.
 ```
+
+## API
+
+Here is a list of options you can pass in as an options object to `nvar`:
+
+### Options
+
+Option | Default | Description
+--- | --- | ---
+`path` | `'./.env'` |  Location of the envfile to load. If you only want to change this filepath, you can pass it directly as a string argument, instead of wrapping it in an options object.
+`source` | `null` | Alternatively, pass in the assignments directly as text, e.g. `'EGGS=halfboiled\nTOAST=kaya'`. `path` is ignored if `source` is set.
+`target` | `process.env` | Where to save the assignments to.
+`enoent` | `'warn'` if relying on default `path`, `'error'` if path was specified | Whether to throw an error, log a warning to stderr, or do nothing if the file was not found. Irrelevant if using `source` instead of `path`.
+
+## Contributing
 
 <!--## Testing
 

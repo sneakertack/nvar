@@ -1,0 +1,25 @@
+FOO=bar
+EGGS=halfboiled TOAST=kaya
+LUNCH=noodle echo ignored
+conversation='what'\''s your name?
+it is bob.'
+
+DELIMITER=" "
+
+export gum=secretly
+export buns=quietly
+
+VERDICT="we've decided
+that this is pretty !@#\$-ing \"cool\"."
+
+FILLERS="foo"bar'baz'
+
+DB_HOST=data.land
+DB_USER=alice
+DB_PASSWORD=in
+DB_PORT=5432
+DB_DATABASE=hat
+DB_URL=postgresql://${DB_USER}:${DB_PASSWORD}@$DB_HOST:$DB_PORT/${DB_DATABASE}
+
+pi=3.141\
+59265359

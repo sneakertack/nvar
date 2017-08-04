@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/sneakertack/nvar.svg?branch=master)](https://travis-ci.org/sneakertack/nvar) ![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-48%2F48-brightgreen.svg)
+[![Build Status](https://travis-ci.org/sneakertack/nvar.svg?branch=master)](https://travis-ci.org/sneakertack/nvar) ![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-49%2F49-brightgreen.svg) [![Coverage Status](https://coveralls.io/repos/github/sneakertack/nvar/badge.svg?branch=master)](https://coveralls.io/github/sneakertack/nvar?branch=master)
 
 ## Intro
 
 `nvar` is a Node module that lets you declare environment variables in an envfile (usually `.env` in your app's root folder). When your app starts, `nvar` loads those variables (into `process.env` by default), making it useful for editing your app configuration and API credentials during development.
 
-It works like (and is inspired by) [dotenv](https://github.com/bkeepers/dotenv) (Ruby), [dotenv](https://github.com/motdotla/dotenv) (Node), and [env2](https://github.com/dwyl/env2). It differs from the popular [dotenv](https://github.com/motdotla/dotenv) library for Node in that nvar follows Shell syntax (so if you are already loading environment variables via `source`, you can expect this module to be a drop-in replacement).
+It works like (and is inspired by) [dotenv](https://github.com/bkeepers/dotenv) (Ruby), [dotenv](https://github.com/motdotla/dotenv) (Node), and [env2](https://github.com/dwyl/env2). It differs from the popular [dotenv](https://github.com/motdotla/dotenv) library for Node in that `nvar` follows Shell syntax (so if you are already loading environment variables via `source`, you can expect this module to work like a drop-in replacement).
 
 
 ## Usage

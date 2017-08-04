@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.2] - 2017-08-04
+### Added
+- Add integration with Coveralls.
+- Add an overall functional test.
+
+### Changed
+- Throw an error if the module encounters an unexpected character during variable declaration.
+
 ## [1.2.1] - 2017-08-03
 ### Added
 - API section in the readme, which details options and defaults.

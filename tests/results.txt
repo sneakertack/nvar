@@ -1,0 +1,89 @@
+
+  Test rig
+
+    ✔ Test rig for parsing is correctly wired to the module's API.
+
+  Unquoted values
+
+    ✔ Handles basic unquoted assignment.
+    ✔ Ignores non-assignments.
+    ✔ Accepts multiple assignments at the start of a single line.
+    ✔ Ignores assignment-like statements once a non-assignment has been encountered.
+
+  'export' Prefix
+
+    ✔ Accepts optional 'export' prefix at the start of assignment.
+    ✔ Only allows at most 1 optional prefix.
+
+  Escaping with backslashes
+
+    ✔ Removes backslash-newline combination.
+    ✔ Preserves literal value of character following a backslash.
+    ✔ Allows escaping of the space character in an unquoted value.
+    ✔ Removes backslash-newline combinations even in the left side of an assignment.
+    ✔ Does not otherwise work in the left side of an assignment.
+
+  Basic Parameter expansion
+
+    ✔ Handles basic parameter expansion (unbraced).
+    ✔ Handles basic parameter expansion (braced).
+    ✔ Handles unbraced parameter expansion with literal prefix.
+    ✔ Handles braced parameter expansion with literal suffix.
+    ✔ Handles demarcating the end of a variable name with a backslash in an unbraced expansion.
+    ✔ Does not expand if $-char is escaped.
+    ✔ Does not expand if opening brace is escaped.
+
+  Escaping with single-quotes
+
+    ✔ Does not include surrounding quotes in final value.
+    ✔ Treats spaces and tabs literally.
+    ✔ Treats newlines literally.
+    ✔ Prevents backslash-escaping.
+    ✔ Treats all other symbol characters (except single-quotes) literally.
+
+  Escaping with double-quotes
+
+    ✔ Does not include surrounding quotes in final value.
+    ✔ Treats spaces and tabs literally.
+    ✔ Treats newlines literally.
+    ✔ Removes backslash-newline combination.
+    ✔ Allows backslash-escaping of double-quotes.
+    ✔ Allows backslash-escaping of $-signs.
+    ✔ Allows backslash-escaping of backslashes.
+    ✔ Does not otherwise do backslash-escaping (i.e. preserves backslash literal).
+
+  Intense combinations of the above
+
+    ✔ Combo (incl. quoted element concatenation).
+    ✔ Combo (incl. expected single-quoted usage and escaping).
+    ✔ Combo (incl. quote literals in expanded parameters).
+
+  Comments
+
+    ✔ Ignores full-line comments ('#' at start of line).
+    ✔ Ignores same-line comments (upon seeing space-hash (i.e. ' #') till end of line).
+    ✔ Doesnt't treat backslash-escaped space-hash as start of commentary.
+    ✔ Doesnt't treat space-hash within single-quotes as start of commentary.
+    ✔ Doesnt't treat space-hash within double-quotes as start of commentary.
+
+  Handling missing input
+
+    ✔ 0-arg: Logs a warning when default `.env` file can't be found.
+    ✔ string-arg: Throws an error if the specified path can't be found.
+    ✔ opts-arg: Logs a warning if file was not found and `path` was unspecified.
+    ✔ opts-arg: Throws an error if file was not found and `path` was specified.
+    ✔ Always remains silent when `enoent` is overriden to null.
+    ✔ Always logs a warning when `enoent` is overriden to 'warn'.
+    ✔ Throws an error when `enoent` is overriden to 'error' (path unspecified).
+    ✔ Throws an error when `enoent` is overriden to 'error' (path specified).
+
+  Composite test
+
+    ✔ Successfully handles an example envfile.
+
+
+  total:     49
+  passing:   49
+  duration:  363ms
+
+

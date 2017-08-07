@@ -102,6 +102,8 @@ DB_NAME=fun
 DB_URL="${DB_USER}:${DB_PASS}@$DB_HOST:$DB_PORT/${DB_NAME}" # Curly braces are optional. Can be done within double quotes, or unquoted.
 ```
 
+Feel free to review the [test results](https://github.com/sneakertack/nvar/blob/master/tests/results.txt), which also doubles as a specification for the syntax that can be accepted by the module.
+
 ## API
 
 Here is a list of options you can pass in as an options object to `nvar`:
@@ -110,13 +112,11 @@ Here is a list of options you can pass in as an options object to `nvar`:
 
 Option | Default | Description
 --- | --- | ---
-`path` | `'./.env'` |  Location of the envfile to load. If you only want to change this filepath, you can pass it directly as a string argument, instead of wrapping it in an options object.
-`source` | `null` | Alternatively, pass in the assignments directly as text, e.g. `'EGGS=halfboiled\nTOAST=kaya'`. `path` is ignored if `source` is set.
-`target` | `process.env` | Where to save the assignments to.
-`enoent` | `'warn'` if relying on default `path`, `'error'` if path was specified | Whether to throw an error, log a warning to stderr, or do nothing if the file was not found. Irrelevant if using `source` instead of `path`.
+`path`&nbsp;<sup>v1.0</sup> | `'./.env'` |  Location of the envfile to load. If you only want to change this filepath, you can pass it directly as a string argument, instead of wrapping it in an options object.
+`source`&nbsp;<sup>v1.0</sup> | `null` | Alternatively, pass in the assignments directly as text, e.g. `'EGGS=halfboiled\nTOAST=kaya'`. `path` is ignored if `source` is set.
+`target`&nbsp;<sup>v1.0</sup> | `process.env` | Where to save the assignments to.
+`enoent`&nbsp;<sup>v1.1</sup> | `'warn'` if relying on default `path`, `'error'` if path was specified | Whether to throw an error, log a warning to stderr, or do nothing if the file was not found. Irrelevant if using `source` instead of `path`.
 
 ## Contributing
 
-<!--## Testing
-
-`nvar` was released a bit late to the Node environment management party, but makes up for it by being **thoroughly tested**. -->
+Where possible, this module tries to support all shell syntax that might reasonably be expected to appear in a config file. If you believe you have a use case that is not covered, feel free to [raise an issue](https://github.com/sneakertack/nvar/issues).

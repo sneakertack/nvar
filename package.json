@@ -1,6 +1,6 @@
 {
   "name": "nvar",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Reads shell environment variables from a file and assigns them to `process.env` (or anywhere else).",
   "main": "lib/index.js",
   "engines": {

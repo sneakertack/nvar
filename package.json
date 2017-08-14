@@ -9,11 +9,9 @@
   "scripts": {
     "prepare": "npm run transpile",
     "transpile": "babel lib/nvar.js -o lib/nvar-es5.js",
-    "test": "npm run -s test-tap | tap-spec | tee tests/results.txt",
-    "test-cov": "nyc -s npm run -s test-tap | tap-spec",
-    "test-cov-report": "nyc -s npm run -s test-tap | tap-spec; nyc report",
+    "test": "nyc -s --produce-source-map --eager --cache false npm run -s test-tap | tap-spec | tee tests/results.txt; nyc report | tee -a tests/results.txt",
     "test-tap": "tape tests",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "env",
@@ -63,5 +61,6 @@
       "lcov",
       "html"
     ]
-  }
+  },
+  "dependencies": {}
 }

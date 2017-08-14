@@ -5,12 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Unified testing/coverage commands into a single `npm test`.
 
 ## [1.2.3] - 2017-08-07
 ### Added
 - Add a copy of the most recent tests results to `tests/`.
 - Include license file with the repository.
-- Add an overall functional test.
 
 ## [1.2.2] - 2017-08-04
 ### Added

@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Unified testing/coverage commands into a single `npm test`.
 
+### Fixed
+- Restore running of tests on Travis CI (broken since ad42abd532d1628c75b6f9bddeca36181c3846a3).
+
 ## [1.2.3] - 2017-08-07
 ### Added
 - Add a copy of the most recent tests results to `tests/`.

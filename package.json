@@ -37,6 +37,7 @@
     "coveralls": "^2.13.1",
     "nyc": "^10.3.2",
     "sinon": "^2.4.1",
+    "source-map-support": "^0.4.16",
     "tap-spec": "^4.1.1",
     "tape": "^4.7.0"
   },

@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "npm run transpile",
     "transpile": "babel lib/nvar.js -o lib/nvar-es5.js",
-    "test": "nyc -s --produce-source-map --eager --cache false npm run -s test-tap | tap-spec | tee tests/results.txt; nyc report | tee -a tests/results.txt",
+    "test": "nyc -s --produce-source-map --eager --cache false npm run -s test-tap | tap-spec | tee --output-error tests/results.txt && nyc report | tee -a --output-error tests/results.txt",
     "test-tap": "tape tests",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -35,7 +35,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
     "coveralls": "^2.13.1",
-    "nyc": "^11.0.3",
+    "nyc": "^10.3.2",
     "sinon": "^2.4.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.7.0"

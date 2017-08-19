@@ -1,7 +1,7 @@
 language: node_js
 script:
   - npm run transpile
-  - npm test
+  - npm run test-tap && npm test
 node_js:
   - "node"
   - "6"

@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Unified testing/coverage commands into a single `npm test`.
+- Adjusted test script commands.
 
 ### Fixed
 - Restore running of tests on Travis CI (broken since ad42abd532d1628c75b6f9bddeca36181c3846a3).

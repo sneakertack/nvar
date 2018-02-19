@@ -77,20 +77,29 @@
     ✔ Throws an error when `enoent` is overriden to 'error' (path unspecified).
     ✔ Throws an error when `enoent` is overriden to 'error' (path specified).
 
+  Overriding existing variables
+
+    ✔ Overrides all existing variables by default.
+    ✔ Overrides all existing variables when `override` is set to 'all'.
+    ✔ Overrides empty variables only when `override` is set to 'empty'.
+    ✔ Does not override existing variables when `override` is set to 'none'.
+    ✔ Overrides based on the boolean result of an arbitrary function assigned to `override`.
+    ✔ Throws an error when `override` is set to a bogus string value.
+
   Composite test
 
     ✔ Successfully handles an example envfile.
 
 
-  total:     49
-  passing:   49
-  duration:  1.3s
+  total:     55
+  passing:   55
+  duration:  1.5s
 
 
 ----------|----------|----------|----------|----------|----------------|
 File      |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
 ----------|----------|----------|----------|----------|----------------|
-All files |    98.28 |     93.9 |      100 |    97.67 |                |
+All files |    98.44 |    94.57 |      100 |    97.89 |                |
  index.js |      100 |       50 |      100 |      100 |              2 |
- nvar.js  |    98.26 |       95 |      100 |    97.65 |         39,128 |
+ nvar.js  |    98.43 |    95.56 |      100 |    97.87 |         57,146 |
 ----------|----------|----------|----------|----------|----------------|

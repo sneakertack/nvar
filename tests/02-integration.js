@@ -27,3 +27,43 @@ test('Handling missing input', function (t) {
 
   t.end();
 });
+
+test('Overriding existing variables', function (t) {
+
+  t.deepEqual(nvar({
+    source: 'new=2\nexisting=2\nempty=2',
+    target: {existing: '1', empty: ''}
+  }), {new: '2', existing: '2', empty: '2'}, 'Overrides all existing variables by default.');
+
+  t.deepEqual(nvar({
+    override: 'all',
+    source: 'new="2"\nexisting="2"\nempty="2"',
+    target: {existing: '1', empty: ''}
+  }), {new: '2', existing: '2', empty: '2'}, 'Overrides all existing variables when `override` is set to \'all\'.');
+
+  t.deepEqual(nvar({
+    override: 'empty',
+    source: `new='2'\nexisting='2'\nempty='2'`,
+    target: {existing: '1', empty: ''}
+  }), {new: '2', existing: '1', empty: '2'}, 'Overrides empty variables only when `override` is set to \'empty\'.');
+
+  t.deepEqual(nvar({
+    override: 'none',
+    source: 'new=2\nexisting=2\nempty=2',
+    target: {existing: '1', empty: ''}
+  }), {new: '2', existing: '1', empty: ''}, 'Does not override existing variables when `override` is set to \'none\'.');
+
+  t.deepEqual(nvar({
+    override: function (key, target) {return key[0] === 'e'},
+    source: 'new=2\nexisting=2\nempty=2',
+    target: {existing: '1', empty: ''}
+  }), {existing: '2', empty: '2'}, 'Overrides based on the boolean result of an arbitrary function assigned to `override`.');
+
+  t.throws(() => nvar({
+    override: 'bogus',
+    source: 'new=2\nexisting=2\nempty=2',
+    target: {existing: '1', empty: ''}
+  }), 'Throws an error when `override` is set to a bogus string value.');
+
+  t.end();
+})

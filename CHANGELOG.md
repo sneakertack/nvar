@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2018-02-20
+### Added
+- Add `override` configuration option, which controls whether variables that are already pre-existing in the environment should be overriden or not.
+
 ## [1.2.4] - 2017-08-19
 ### Changed
 - Adjusted test script commands.

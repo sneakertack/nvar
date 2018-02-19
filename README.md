@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sneakertack/nvar.svg?branch=master)](https://travis-ci.org/sneakertack/nvar) ![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-49%2F49-brightgreen.svg) [![Coverage Status](https://coveralls.io/repos/github/sneakertack/nvar/badge.svg?branch=master)](https://coveralls.io/github/sneakertack/nvar?branch=master)
+[![Build Status](https://travis-ci.org/sneakertack/nvar.svg?branch=master)](https://travis-ci.org/sneakertack/nvar) ![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-55%2F55-brightgreen.svg) [![Coverage Status](https://coveralls.io/repos/github/sneakertack/nvar/badge.svg?branch=master)](https://coveralls.io/github/sneakertack/nvar?branch=master)
 
 ## Intro
 
@@ -50,7 +50,8 @@ require('nvar')({
   path: '../somedir/set-env.sh', // Filepath to envfile
   source: 'FOO=BAR', // Alternatively, provide the envfile source directly.
   target: module.exports, // Assign to something else besides process.env instead.
-  enoent: 'warn' // What should happen if the envfile was not found? Set to null|'warn'|'error'.
+  enoent: 'warn', // What should happen if the envfile was not found? Set to null|'warn'|'error'.
+  override: 'all' // Whether to override pre-existing variables. Set to 'all'|'empty'|'none'.
 });
 ```
 
@@ -116,6 +117,7 @@ Option | Default | Description
 `source`&nbsp;<sup>v1.0</sup> | `null` | Alternatively, pass in the assignments directly as text, e.g. `'EGGS=halfboiled\nTOAST=kaya'`. `path` is ignored if `source` is set.
 `target`&nbsp;<sup>v1.0</sup> | `process.env` | Where to save the assignments to.
 `enoent`&nbsp;<sup>v1.1</sup> | `'warn'` if relying on default `path`, `'error'` if path was specified | Whether to throw an error, log a warning to stderr, or do nothing if the file was not found. Irrelevant if using `source` instead of `path`.
+`override`&nbsp;<sup>v1.3</sup> | `'all'` | If a variable already exists in the environment, should `nvar` override it? `'all'` means the environment can be overriden (default). `'empty'` means only empty `''` or unset variables can be set. `'none'` means only unset variables can be set.<br/><br/><small>_Advanced needs: Need even more control? Pass in a custom function (params `(key, env)`) that returns `true` or `false` instead. E.g. setting `override` to `(key) => !/[A-Z]/.test(key)` overrides variables written in lowercase only._</small>
 
 ## Contributing
 

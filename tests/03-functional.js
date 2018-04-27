@@ -10,6 +10,7 @@ test('Composite test', function (t) {
     conversation: 'what\'s your name?\nit is bob.',
     DELIMITER: ' ',
     gum: 'secretly',
+    buns: 'quietly',
     VERDICT: 'we\'ve decided\nthat this is pretty !@#$-ing "cool".',
     FILLERS: 'foobarbaz',
     DB_HOST: 'data.land',

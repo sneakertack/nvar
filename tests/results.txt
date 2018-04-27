@@ -14,6 +14,9 @@
 
     ✔ Accepts optional 'export' prefix at the start of assignment.
     ✔ Only allows at most 1 optional prefix.
+    ✔ Accepts multiple lines that have been prefixed with 'export'.
+    ✔ Still allows assignment of a variable that's named 'export'.
+    ✔ Still allows assignment of a variable (that is exported) that is also named 'export'.
 
   Escaping with backslashes
 
@@ -91,15 +94,15 @@
     ✔ Successfully handles an example envfile.
 
 
-  total:     55
-  passing:   55
-  duration:  1.5s
+  total:     58
+  passing:   58
+  duration:  1.4s
 
 
 ----------|----------|----------|----------|----------|----------------|
 File      |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
 ----------|----------|----------|----------|----------|----------------|
-All files |    98.44 |    94.57 |      100 |    97.89 |                |
+All files |    98.47 |    94.57 |      100 |    97.96 |                |
  index.js |      100 |       50 |      100 |      100 |              2 |
- nvar.js  |    98.43 |    95.56 |      100 |    97.87 |         57,146 |
+ nvar.js  |    98.46 |    95.56 |      100 |    97.94 |         57,148 |
 ----------|----------|----------|----------|----------|----------------|

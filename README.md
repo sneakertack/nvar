@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sneakertack/nvar.svg?branch=master)](https://travis-ci.org/sneakertack/nvar) ![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-55%2F55-brightgreen.svg) [![Coverage Status](https://coveralls.io/repos/github/sneakertack/nvar/badge.svg?branch=master)](https://coveralls.io/github/sneakertack/nvar?branch=master)
+[![Build Status](https://travis-ci.org/sneakertack/nvar.svg?branch=master)](https://travis-ci.org/sneakertack/nvar) ![A static test-count badge (dynamise one day)](https://img.shields.io/badge/tests-58%2F58-brightgreen.svg) [![Coverage Status](https://coveralls.io/repos/github/sneakertack/nvar/badge.svg?branch=master)](https://coveralls.io/github/sneakertack/nvar?branch=master)
 
 ## Intro
 

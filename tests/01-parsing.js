@@ -27,6 +27,9 @@ test('Unquoted values', function (t) {
 test("'export' Prefix", function (t) {
   t.deepEqual(nv('export toast=kaya'), {toast: 'kaya'}, "Accepts optional 'export' prefix at the start of assignment.");
   t.deepEqual(nv('export export toast=kaya'), {}, 'Only allows at most 1 optional prefix.');
+  t.deepEqual(nv('export gum=secretly\nexport buns=quietly'), {gum: 'secretly', buns: 'quietly'}, "Accepts multiple lines that have been prefixed with 'export'.");
+  t.deepEqual(nv('export=export'), {export: 'export'}, "Still allows assignment of a variable that's named 'export'.");
+  t.deepEqual(nv('export export=export'), {export: 'export'}, "Still allows assignment of a variable (that is exported) that is also named 'export'.");
 
   t.end();
 });

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.1] - 2018-04-27
+### Fixed
+- Fix bug preventing multiple 'export'-prefixed statements from working (https://github.com/sneakertack/nvar/issues/4).
+
 ## [1.3.0] - 2018-02-20
 ### Added
 - Add `override` configuration option, which controls whether variables that are already pre-existing in the environment should be overriden or not.
